@@ -7,20 +7,20 @@ end
 
 local component = require "component"
 local gpu = component.gpu
-local internet = require("internet")  
-local handle = internet.open("127.0.0.1", 54321)  
+local internet = require("internet")
+local handle = internet.open("127.0.0.1", 54321)
 
 while true do
- 
+
   local frameSize = handle:read(4)
   local frameBytes = bytesToInt(frameSize)
- 
+
   local width = 160
 
   local x = 1
   local y = 1
 
-  for i = 1,frameBytes,3 do 
+  for i = 1,frameBytes,3 do
     local r = string.byte(handle:read(1), 1)
     local g = string.byte(handle:read(1), 1)
     local b = string.byte(handle:read(1), 1)
@@ -35,5 +35,7 @@ while true do
       y = y + 1
     end
   end
-end 
+
+  handle:write(string.char(0xF1))
+end
 handle:close()
