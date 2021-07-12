@@ -3,6 +3,8 @@ package com.bradyrussell;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -67,6 +69,9 @@ public class Main {
         chromeOptions.addArguments("--verbose", "--no-sandbox","--disable-extensions"," --disable-gpu", "--disable-infobars", "--start-maximized","--single-process", "--disable-dev-shm-usage");
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.get(pageURL);
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+
         try {
             while(true) {
                 ServerSocket serverSocket = null;
@@ -79,6 +84,7 @@ public class Main {
                     System.out.println("Connection received! Begin streaming...");
                     if(clientSocket.isConnected()) {
                         DataOutputStream dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
+                        InputStream inputStream = clientSocket.getInputStream();
 
                         while(clientSocket.isConnected()) {
                             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -96,7 +102,10 @@ public class Main {
                             dataOutputStream.writeInt(data.length);
                             dataOutputStream.write(data);
 
-                            Thread.sleep(1000);
+                            while (inputStream.available() <= 0) {
+                                Thread.sleep(100);
+                                if(inputStream.read() == 0xF1) break; // ready for new frame
+                            }
                         }
                     }
                     System.out.println("Connection lost! Ending stream.");
