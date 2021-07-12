@@ -7,3 +7,7 @@ This is just a proof of concept and not optimized.
 You must explicity allow localhost connections in OpenComputers config by setting the blacklist to just \[].
 
 ![Example](https://github.com/bradyrussell/WebPageOCStreamer/raw/master/webpageOCstreamer.png)
+
+Video: 
+
+[![Video](https://img.youtube.com/vi/KznpJbUaLGo/0.jpg)](https://www.youtube.com/watch?v=KznpJbUaLGo)
