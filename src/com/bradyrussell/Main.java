@@ -102,9 +102,8 @@ public class Main {
                             dataOutputStream.writeInt(data.length);
                             dataOutputStream.write(data);
 
-                            while (inputStream.available() <= 0) {
+                            while (inputStream.available() <= 0) {// ready for new frame
                                 Thread.sleep(100);
-                                if(inputStream.read() == 0xF1) break; // ready for new frame
                             }
                         }
                     }
