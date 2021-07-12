@@ -21,9 +21,9 @@ while true do
   local y = 1
 
   for i = 1,frameBytes,3 do
-    local r = string.byte(handle:read(1), 1)
-    local g = string.byte(handle:read(1), 1)
     local b = string.byte(handle:read(1), 1)
+    local g = string.byte(handle:read(1), 1)
+    local r = string.byte(handle:read(1), 1)
     ---print(x..', '..y..': '..r..', '..g..', '..b)
 
     gpu.setForeground(RGBToInt(r,g,b))

@@ -65,8 +65,8 @@ public class Main {
 
         System.setProperty("webdriver.chrome.driver", chromeDriver);
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setHeadless(true);
-        chromeOptions.addArguments("--verbose", "--no-sandbox","--disable-extensions"," --disable-gpu", "--disable-infobars", "--start-maximized","--single-process", "--disable-dev-shm-usage");
+        //chromeOptions.setHeadless(true);
+        //chromeOptions.addArguments("--verbose", "--no-sandbox","--disable-extensions"," --disable-gpu", "--disable-infobars", "--start-maximized","--single-process", "--disable-dev-shm-usage");
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.get(pageURL);
 
