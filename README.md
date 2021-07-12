@@ -11,3 +11,7 @@ You must explicitly allow localhost connections in OpenComputers config by setti
 Video: 
 
 [![Video](https://img.youtube.com/vi/KznpJbUaLGo/0.jpg)](https://www.youtube.com/watch?v=KznpJbUaLGo)
+
+Current Release: 
+
+https://github.com/bradyrussell/WebPageOCStreamer/releases/tag/v1.0
